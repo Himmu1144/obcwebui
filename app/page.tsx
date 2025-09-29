@@ -19,16 +19,18 @@ declare global {
 }
 
 // Testimonials Component with Unsplash images
-const Testimonials = () => {
+const Testimonials = () => { 
   return (
     <section className="testimonial-section">
-      <div className="testimonial-container">
-        <div className="testimonial-header">
-          <div className="testimonial-badge">Client Experiences</div>
-          <h2 className="testimonial-title">Voices of Our Valued Clients</h2>
-          <p className="testimonial-subtitle">Discover why discerning luxury car owners trust us with their prized vehicles.</p>
-        </div>
+     <div className="banner-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div className="banner-content">
+      <h2 className="section-title" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Client <span>Experiences</span></h2>
+    </div>
+  </div>
 
+
+      <div className="testimonial-container">
+        {/* removed old .testimonial-header */}
         <div className="testimonial-slider">
           <div className="testimonial-carousel">
             {/* Testimonial Card 1 */}
@@ -127,17 +129,160 @@ const Testimonials = () => {
 };
 
 
+
+
+
+// News & Updates Section Component
+const NewsUpdatesSection = () => {
+  const newsItems = [
+    {
+      id: 1,
+      category: "Service Update",
+      title: "New Express Detailing Service Launched",
+      excerpt: "Get your car detailed in under 2 hours with our new express service. Premium quality, faster turnaround.",
+      date: "Dec 15, 2024",
+      image: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=800&q=80",
+      readTime: "2 min read"
+    },
+    {
+      id: 2,
+      category: "Technology",
+      title: "AI-Powered Diagnostics Now Available",
+      excerpt: "Experience cutting-edge car diagnostics with our new AI system that predicts issues before they occur.",
+      date: "Dec 10, 2024",
+      image: "https://images.unsplash.com/photo-1625773049545-fb23fc7d6e62?w=800&q=80",
+      readTime: "3 min read"
+    },
+    {
+      id: 3,
+      category: "Expansion",
+      title: "Now Serving 5 New Areas in Delhi NCR",
+      excerpt: "We've expanded our service coverage to include Dwarka, Rohini, Pitampura, Janakpuri, and Mayur Vihar.",
+      date: "Dec 5, 2024",
+      image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80",
+      readTime: "1 min read"
+    },
+    {
+      id: 4,
+      category: "Partnership",
+      title: "Partnership with Mercedes-Benz India",
+      excerpt: "Proud to announce our official partnership as an authorized service provider for Mercedes-Benz vehicles.",
+      date: "Nov 28, 2024",
+      image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80",
+      readTime: "4 min read"
+    },
+    {
+      id: 5,
+      category: "Award",
+      title: "Best Doorstep Service Provider 2024",
+      excerpt: "Honored to receive the 'Excellence in Automotive Service' award at the India Auto Summit 2024.",
+      date: "Nov 20, 2024",
+      image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
+      readTime: "2 min read"
+    },
+    {
+      id: 6,
+      category: "Tips & Guides",
+      title: "Winter Car Care: Essential Maintenance Tips",
+      excerpt: "Prepare your vehicle for the winter season with our comprehensive maintenance guide and expert tips.",
+      date: "Nov 15, 2024",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=80",
+      readTime: "5 min read"
+    }
+  ];
+
+  const featuredNews = newsItems[0];
+  const regularNews = newsItems.slice(1);
+
+  return (
+    <section className="news-updates-section">
+     <div className="banner-header">
+        <div className="banner-content">
+          <h2 className="section-title">News & <span>Announcements</span></h2>
+        </div>
+      </div>
+
+      <div className="news-container">
+
+        <div className="news-grid">
+          {/* Featured Article */}
+          <div className="featured-article">
+            <div className="featured-image-wrapper">
+              <img src={featuredNews.image} alt={featuredNews.title} className="featured-image" />
+              <div className="featured-overlay"></div>
+              <span className="featured-category">{featuredNews.category}</span>
+            </div>
+            <div className="featured-content">
+              <div className="featured-meta">
+                <span className="featured-date">{featuredNews.date}</span>
+                <span className="featured-divider">•</span>
+                <span className="featured-readtime">{featuredNews.readTime}</span>
+              </div>
+              <h3 className="featured-title">{featuredNews.title}</h3>
+              <p className="featured-excerpt">{featuredNews.excerpt}</p>
+              <a href="#" className="featured-link">
+                Read More 
+                <svg className="featured-arrow" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Regular Articles Grid */}
+          <div className="articles-grid">
+            {regularNews.map((item) => (
+              <article key={item.id} className="news-card">
+                <div className="news-card-image-wrapper">
+                  <img src={item.image} alt={item.title} className="news-card-image" />
+                  <span className="news-card-category">{item.category}</span>
+                </div>
+                <div className="news-card-content">
+                  <div className="news-card-meta">
+                    <span className="news-card-date">{item.date}</span>
+                    <span className="news-card-readtime">{item.readTime}</span>
+                  </div>
+                  <h4 className="news-card-title">{item.title}</h4>
+                  <p className="news-card-excerpt">{item.excerpt}</p>
+                  <a href="#" className="news-card-link">
+                    <span>Read More</span>
+                    <svg viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        {/* View All Button */}
+        <div className="news-footer">
+          <a href="#" className="view-all-button">
+            View All Articles
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
 // PASTE THIS NEW COMPONENT, REPLACING THE OLD Faq COMPONENT
 
 const Faq = () => {
   return (
     <section className="faq-section">
-      <div className="faq-container">
-        <div className="faq-header">
-          <div className="faq-badge">Need Help?</div>
-          <h2 className="faq-title">Frequently Asked Questions</h2>
-          <p className="faq-subtitle">Your questions, answered. Find information about our services, booking process, and more.</p>
+      <div className="banner-header">
+        <div className="banner-content">
+          <h2 className="section-title">Frequently Asked <span>Questions</span></h2>
         </div>
+      </div>
+
+      <div className="faq-container">
         <div className="faq-grid">
           <div className="faq-list">
             {/* FAQ Item 1 */}
@@ -271,6 +416,91 @@ export default function HomePage() {
     
     const customForm = document.getElementById('CustomForm') as HTMLFormElement;
     const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
+
+    const animatedTitle = document.getElementById('animated-title');
+const quotes = [
+    "Get Free Estimates",
+    "Get Free Quotes",
+    "Luxury Car Care",
+    "Precision Service Guaranteed",
+    "Your Car, Our Passion",
+    // "Excellence In Motion"
+];
+let quoteIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+ 
+const typeWriter = () => {
+    // Ensure the element exists before running
+    if (!animatedTitle) return;
+
+    const currentQuote = quotes[quoteIndex];
+    const typeSpeed = isDeleting ? 75 : 150; // Speed of typing/deleting
+
+    // Logic to type or delete characters
+    if (isDeleting) {
+        // Deleting
+        animatedTitle.textContent = currentQuote.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        // Typing
+        animatedTitle.textContent = currentQuote.substring(0, charIndex + 1);
+        charIndex++;
+    }
+
+    // Check if a quote is fully typed or fully deleted
+    if (!isDeleting && charIndex === currentQuote.length) {
+        // Pause at the end of the quote before deleting
+        setTimeout(() => { isDeleting = true; }, 2000); // 2-second pause
+    } else if (isDeleting && charIndex === 0) {
+        // Move to the next quote after deleting
+        isDeleting = false;
+        quoteIndex = (quoteIndex + 1) % quotes.length;
+        // Small pause before typing the next quote
+        setTimeout(typeWriter, 500); // 0.5-second pause
+        return; // Return to avoid calling the next timeout immediately
+    }
+
+    setTimeout(typeWriter, typeSpeed);
+};
+
+// Start the animation when the component mounts
+typeWriter();
+// END: New code for typewriter animation
+
+const statCounters = document.querySelectorAll('.stat-count');
+const animationDuration = 2000; // 2 seconds
+
+const counterObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const targetVal = parseInt(el.dataset.val || '0', 10);
+            let startTime: number | null = null;
+
+            const step = (timestamp: number) => {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / animationDuration, 1);
+                const currentVal = Math.floor(progress * targetVal);
+                el.textContent = `${currentVal}+`;
+
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    el.textContent = `${targetVal}+`; // Ensure it ends on the exact number
+                }
+            };
+            
+            window.requestAnimationFrame(step);
+            observer.unobserve(el); // Animate only once
+        }
+    });
+}, { threshold: 0.5 }); // Start animation when 50% of the element is visible
+
+statCounters.forEach(counter => {
+    counterObserver.observe(counter);
+});
+
 
     const carModels = {
         "Aston Martin": [{"name":"Vantage","image":"https://onlybigcars.com/wp-content/uploads/2024/11/1.jpeg","years":["2024","2023"],"fuel":[{"name":["Petrol"],"image":"https://onlybigcars.com/wp-content/uploads/2024/11/PETROL.svg"}]}],
@@ -697,7 +927,7 @@ export default function HomePage() {
       >
         <div className="hero-container">
           <div className="service-card">
-            <h2 className="card-title">Rev Up Your Ride</h2>
+            <h2 className="card-title" id="animated-title">&nbsp;</h2>
             <p className="card-subtitle">Your Journey to Perfect Car Care Starts Here!</p>
             <form id="CustomForm">
               <div className="form-group">
@@ -741,102 +971,238 @@ export default function HomePage() {
       {/* This section will ONLY be visible on screens wider than 768px */}
       {/* =================================================================== */}
       <section className="services-section desktop-only" id="services">
+        <div className="banner-header">
+  <div className="banner-content">
+    <h2 className="section-title">
+      Our <span>Services</span>
+    </h2>
+    
+  </div>
+</div>
+
         <div className="floating-element"></div>
         <div className="floating-element"></div>
         <div className="floating-element"></div>
         <div className="services-container">
-          <div className="services-header">
-            <div className="services-badge">Our Premium Services</div>
-            <h2 className="services-title">Luxury Car Care<br />Redefined</h2>
-            <p className="services-subtitle">Expert servicing and repairs for top luxury brands including BMW, Audi, Mercedes-Benz, and Porsche, ensuring premium care with genuine parts and certified technicians.</p>
-          </div>
           <div className="services-grid">
             {/* All 12 service items go here, same as before */}
             <div className="service-item">
-              <div className="service-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" /></svg></div>
+              <div className="service-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" />
+                </svg>
+              </div>
               <h3 className="service-title">Car Services</h3>
-              <p className="service-description">Comprehensive maintenance and repair services for all luxury car models with premium quality standards.</p>
-              <div className="service-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" /></svg></div>
+              <p className="service-description">
+                Comprehensive maintenance and repair services for all luxury car models with premium quality standards.
+              </p>
+              <div className="service-arrow">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                </svg>
+              </div>
             </div>
             <div className="service-item">
-              <div className="service-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.5 6.5c1.38 0 2.5 1.12 2.5 2.5 0 .74-.4 1.39-1 1.73v7.27h-3v-7.27c-.6-.34-1-.99-1-1.73 0-1.38 1.12-2.5 2.5-2.5zm-9-4h17c.55 0 1 .45 1 1v2c0 .55-.45 1-1 1h-17c-.55 0-1-.45-1-1v-2c0-.55.45-1 1-1zm0 16h17c.55 0 1 .45 1 1v2c0 .55-.45 1-1 1h-17c-.55 0-1-.45-1-1v-2c0-.55.45-1 1-1z" /></svg></div>
+              <div className="service-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.5 6.5c1.38 0 2.5 1.12 2.5 2.5 0 .74-.4 1.39-1 1.73v7.27h-3v-7.27c-.6-.34-1-.99-1-1.73 0-1.38 1.12-2.5 2.5-2.5zm-9-4h17c.55 0 1 .45 1 1v2c0 .55-.45 1-1 1h-17c-.55 0-1-.45-1-1v-2c0-.55.45-1 1-1zm0 16h17c.55 0 1 .45 1 1v2c0 .55-.45 1-1 1h-17c-.55 0-1-.45-1-1v-2c0-.55.45-1 1-1z" />
+                </svg>
+              </div>
               <h3 className="service-title">AC Service & Repair</h3>
-              <p className="service-description">Professional air conditioning maintenance, repair, and gas refilling for optimal cabin comfort year-round.</p>
-              <div className="service-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" /></svg></div>
+              <p className="service-description">
+                Professional air conditioning maintenance, repair, and gas refilling for optimal cabin comfort year-round.
+              </p>
+              <div className="service-arrow">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                </svg>
+              </div>
             </div>
             <div className="service-item">
-              <div className="service-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4 8-8z"/></svg></div>
+              <div className="service-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4 8-8z" />
+                </svg>
+              </div>
               <h3 className="service-title">Complete Car Inspection</h3>
-              <p className="service-description">Thorough 360-degree diagnostic inspection using advanced tools to ensure your vehicle's peak performance.</p>
-              <div className="service-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></div>
+              <p className="service-description">
+                Thorough 360-degree diagnostic inspection using advanced tools to ensure your vehicle&apos;s peak performance.
+              </p>
+              <div className="service-arrow">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                </svg>
+              </div>
             </div>
             <div className="service-item">
-              <div className="service-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+              <div className="service-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              </div>
               <h3 className="service-title">Denting & Painting</h3>
-              <p className="service-description">Expert bodywork restoration with precision denting removal and premium paint matching for flawless finish.</p>
-              <div className="service-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></div>
+              <p className="service-description">
+                Expert bodywork restoration with precision denting removal and premium paint matching for flawless finish.
+              </p>
+              <div className="service-arrow">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                </svg>
+              </div>
             </div>
             <div className="service-item">
-              <div className="service-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg></div>
+              <div className="service-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z" />
+                </svg>
+              </div>
               <h3 className="service-title">Car Detailing</h3>
-              <p className="service-description">Premium interior and exterior detailing services to restore your luxury vehicle to showroom condition.</p>
-              <div className="service-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></div>
+              <p className="service-description">
+                Premium interior and exterior detailing services to restore your luxury vehicle to showroom condition.
+              </p>
+              <div className="service-arrow">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                </svg>
+              </div>
             </div>
             <div className="service-item">
-              <div className="service-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div>
+              <div className="service-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                </svg>
+              </div>
               <h3 className="service-title">Brakes & Suspension</h3>
-              <p className="service-description">Advanced brake system maintenance and suspension repairs for optimal safety and smooth driving experience.</p>
-              <div className="service-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></div>
+              <p className="service-description">
+                Advanced brake system maintenance and suspension repairs for optimal safety and smooth driving experience.
+              </p>
+              <div className="service-arrow">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                </svg>
+              </div>
             </div>
             <div className="service-item">
-              <div className="service-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div>
+              <div className="service-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z" />
+                </svg>
+              </div>
               <h3 className="service-title">Car Battery & Electricals</h3>
-              <p className="service-description">Complete electrical system diagnostics, battery replacement, and wiring repairs for reliable performance.</p>
-              <div className="service-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></div>
+              <p className="service-description">
+                Complete electrical system diagnostics, battery replacement, and wiring repairs for reliable performance.
+              </p>
+              <div className="service-arrow">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                </svg>
+              </div>
             </div>
             <div className="service-item">
-              <div className="service-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z"/></svg></div>
+              <div className="service-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z" />
+                </svg>
+              </div>
               <h3 className="service-title">Tyre & Wheel Care</h3>
-              <p className="service-description">Professional tyre replacement, wheel alignment, balancing, and rotation services for enhanced safety and performance.</p>
-              <div className="service-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></div>
+              <p className="service-description">
+                Professional tyre replacement, wheel alignment, balancing, and rotation services for enhanced safety and performance.
+              </p>
+              <div className="service-arrow">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                </svg>
+              </div>
             </div>
             <div className="service-item">
-              <div className="service-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 20.42l-6.21-6.21 2.83-2.83L9 14.77l9.88-9.89 2.83 2.83L9 20.42z"/></svg></div>
+              <div className="service-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 20.42l-6.21-6.21 2.83-2.83L9 14.77l9.88-9.89 2.83 2.83L9 20.42z" />
+                </svg>
+              </div>
               <h3 className="service-title">Cleaning & Grooming</h3>
-              <p className="service-description">Comprehensive interior and exterior cleaning services including steam cleaning, polishing, and protection treatments.</p>
-              <div className="service-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></div>
+              <p className="service-description">
+                Comprehensive interior and exterior cleaning services including steam cleaning, polishing, and protection treatments.
+              </p>
+              <div className="service-arrow">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                </svg>
+              </div>
             </div>
             <div className="service-item">
-              <div className="service-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 9V7l-10-4-10 4v2c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12zM12 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V9.99l7-2.97v3.97z"/></svg></div>
+              <div className="service-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M22 9V7l-10-4-10 4v2c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12zM12 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V9.99l7-2.97v3.97z" />
+                </svg>
+              </div>
               <h3 className="service-title">Clutch & Body Parts</h3>
-              <p className="service-description">Expert clutch repairs, transmission service, and genuine body parts replacement for optimal vehicle function.</p>
-              <div className="service-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></div>
+              <p className="service-description">
+                Expert clutch repairs, transmission service, and genuine body parts replacement for optimal vehicle function.
+              </p>
+              <div className="service-arrow">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                </svg>
+              </div>
             </div>
             <div className="service-item">
-              <div className="service-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V8.99l7-2.97v5.97z"/></svg></div>
+              <div className="service-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V8.99l7-2.97v5.97z" />
+                </svg>
+              </div>
               <h3 className="service-title">Insurance & SOS Service</h3>
-              <p className="service-description">24/7 emergency roadside assistance, insurance claim support, and instant help for unexpected breakdowns.</p>
-              <div className="service-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></div>
+              <p className="service-description">
+                24/7 emergency roadside assistance, insurance claim support, and instant help for unexpected breakdowns.
+              </p>
+              <div className="service-arrow">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                </svg>
+              </div>
             </div>
             <div className="service-item">
-              <div className="service-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div>
+              <div className="service-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                </svg>
+              </div>
               <h3 className="service-title">Windshields & Lights</h3>
-              <p className="service-description">Professional windshield repair and replacement, headlight restoration, and LED lighting upgrades for enhanced visibility and safety.</p>
-              <div className="service-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></div>
+              <p className="service-description">
+                Professional windshield repair and replacement, headlight restoration, and LED lighting upgrades for enhanced visibility and safety.
+              </p>
+              <div className="service-arrow">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                </svg>
+              </div>
             </div>
           </div>
-          {/* CTA Section remains the same */}
           <div className="services-cta">
             <div className="cta-content">
               <h3 className="cta-title">Ready to Experience Excellence?</h3>
-              <p className="cta-subtitle">Get instant quotes for premium car services and join thousands of satisfied customers.</p>
+              <p className="cta-subtitle">
+                Get instant quotes for premium car services and join thousands of satisfied customers.
+              </p>
               <div className="cta-buttons">
-                <a href="#" className="cta-btn cta-btn-primary" onClick={(e) => { e.preventDefault(); window.scrollToHero(); }}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3h2v10h8l-9 9-9-9z" /></svg>
+                <a
+                  href="#"
+                  className="cta-btn cta-btn-primary"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.scrollToHero();
+                  }}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 13h8V3h2v10h8l-9 9-9-9z" />
+                  </svg>
                   Get Quote Now
                 </a>
                 <a href="tel:+919876543210" className="cta-btn cta-btn-secondary">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" /></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                  </svg>
                   Call Now
                 </a>
               </div>
@@ -911,15 +1277,20 @@ export default function HomePage() {
 
       {/* About Us Section */}
       <section className="about-section" id="about">
-        <div className="about-container">
-          <div className="about-header">
-            <div className="about-badge">About OnlyBigCars</div>
-            <h2 className="about-title">Car Service at Your<br />Fingertips – Book Online Today!</h2>
-            <p className="about-description">
-              At Onlybigcars, we understand the importance of your time, which is why we offer convenient online booking and flexible service options. Our goal is to make your experience seamless and stress-free, so you can focus on what matters most – the road ahead!
-            </p>
-           
+        {/* NEW: Banner header for About */}
+        <div className="banner-header">
+          <div className="banner-content">
+            <h2 className="section-title">About <span>OnlyBigCars</span></h2>
           </div>
+        </div>
+
+        <div className="about-container">
+          {/* removed old .about-header */}
+          {/* Intro text moved below banner */}
+          <p className="about-description">
+            At Onlybigcars, we understand the importance of your time, which is why we offer convenient online booking and flexible service options. Our goal is to make your experience seamless and stress-free, so you can focus on what matters most – the road ahead!
+          </p>
+
           
           <div className="about-features">
             <div className="about-feature">
@@ -976,15 +1347,15 @@ export default function HomePage() {
             <p className="about-cta-subtitle">Join thousands of satisfied customers who trust us with their luxury vehicles.</p>
             <div className="about-stats">
               <div className="about-stat">
-                <span className="stat-number">5000+</span>
+                <span className="stat-number stat-count" data-val="5000">0+</span>
                 <span className="stat-label">Happy Customers</span>
               </div>
               <div className="about-stat">
-                <span className="stat-number">10+</span>
+                <span className="stat-number stat-count" data-val="10">0+</span>
                 <span className="stat-label">Years Experience</span>
               </div>
               <div className="about-stat">
-                <span className="stat-number">50+</span>
+                <span className="stat-number stat-count" data-val="50">0+</span>
                 <span className="stat-label">Expert Technicians</span>
               </div>
             </div>
@@ -1081,6 +1452,8 @@ export default function HomePage() {
       <Testimonials />
 
       <Faq />
+
+      <NewsUpdatesSection />
 
       {/* Popup Overlays */}
       <div className="popup-overlay" id="popup-overlay"></div>
@@ -1187,26 +1560,29 @@ export default function HomePage() {
                 </a>
               </div>
             </div>
-            <div>
-              <h4 style={{ marginBottom: '20px', color: '#e53e3e' }}>Quick Links</h4>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                <li style={{ marginBottom: '10px' }}><a href="#" style={{ color: '#b0b0b0', textDecoration: 'none' }}>Home</a></li>
-                <li style={{ marginBottom: '10px' }}><a href="#services" style={{ color: '#b0b0b0', textDecoration: 'none' }}>Services</a></li>
-                <li style={{ marginBottom: '10px' }}><a href="#" style={{ color: '#b0b0b0', textDecoration: 'none' }}>About Us</a></li>
-                <li style={{ marginBottom: '10px' }}><a href="#" style={{ color: '#b0b0b0', textDecoration: 'none' }}>Contact</a></li>
-                <li style={{ marginBottom: '10px' }}><a href="#" style={{ color: '#b0b0b0', textDecoration: 'none' }}>Careers</a></li>
-              </ul>
+            <div className="footer-links-services">
+              <div>
+                <h4 style={{ marginBottom: '20px', color: '#e53e3e' }}>Quick Links</h4>
+                <ul style={{ listStyle: 'none', padding: 0 }}>
+                  <li style={{ marginBottom: '10px' }}><a href="#" style={{ color: '#b0b0b0', textDecoration: 'none' }}>Home</a></li>
+                  <li style={{ marginBottom: '10px' }}><a href="#services" style={{ color: '#b0b0b0', textDecoration: 'none' }}>Services</a></li>
+                  <li style={{ marginBottom: '10px' }}><a href="#" style={{ color: '#b0b0b0', textDecoration: 'none' }}>About Us</a></li>
+                  <li style={{ marginBottom: '10px' }}><a href="#" style={{ color: '#b0b0b0', textDecoration: 'none' }}>Contact</a></li>
+                  <li style={{ marginBottom: '10px' }}><a href="#" style={{ color: '#b0b0b0', textDecoration: 'none' }}>Careers</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 style={{ marginBottom: '10px', color: '#e53e3e' }}>Our Services</h4>
+                <ul style={{ listStyle: 'none', padding: 0 }}>
+                  <li style={{ marginBottom: '10px' }}><a href="#" style={{ color: '#b0b0b0', textDecoration: 'none' }}>Car Servicing</a></li>
+                  <li style={{ marginBottom: '10px' }}><a href="#" style={{ color: '#b0b0b0', textDecoration: 'none' }}>AC Repair</a></li>
+                  <li style={{ marginBottom: '10px' }}><a href="#" style={{ color: '#b0b0b0', textDecoration: 'none' }}>Denting & Painting</a></li>
+                  <li style={{ marginBottom: '10px' }}><a href="#" style={{ color: '#b0b0b0', textDecoration: 'none' }}>Car Detailing</a></li>
+                  <li style={{ marginBottom: '10px' }}><a href="#" style={{ color: '#b0b0b0', textDecoration: 'none' }}>Insurance Claims</a></li>
+                </ul>
+              </div>
             </div>
-            <div>
-              <h4 style={{ marginBottom: '20px', color: '#e53e3e' }}>Our Services</h4>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                <li style={{ marginBottom: '10px' }}><a href="#" style={{ color: '#b0b0b0', textDecoration: 'none' }}>Car Servicing</a></li>
-                <li style={{ marginBottom: '10px' }}><a href="#" style={{ color: '#b0b0b0', textDecoration: 'none' }}>AC Repair</a></li>
-                <li style={{ marginBottom: '10px' }}><a href="#" style={{ color: '#b0b0b0', textDecoration: 'none' }}>Denting & Painting</a></li>
-                <li style={{ marginBottom: '10px' }}><a href="#" style={{ color: '#b0b0b0', textDecoration: 'none' }}>Car Detailing</a></li>
-                <li style={{ marginBottom: '10px' }}><a href="#" style={{ color: '#b0b0b0', textDecoration: 'none' }}>Insurance Claims</a></li>
-              </ul>
-            </div>
+
             <div>
               <h4 style={{ marginBottom: '20px', color: '#e53e3e' }}>Contact Info</h4>
               <div style={{ color: '#b0b0b0', lineHeight: 1.8 }}>
@@ -1216,6 +1592,7 @@ export default function HomePage() {
                 <p style={{ marginBottom: '10px' }}>🕒 Mon-Sun: 9 AM - 8 PM</p>
               </div>
             </div>
+          
           </div>
           <div style={{ borderTop: '1px solid #333', paddingTop: '20px', textAlign: 'center', color: '#666' }}>
             <p>&copy; 2025 Only Big Cars. All rights reserved. | <a href="#" style={{ color: '#e53e3e', textDecoration: 'none' }}>Privacy Policy</a> | <a href="#" style={{ color: '#e53e3e', textDecoration: 'none' }}>Terms of Service</a></p>
